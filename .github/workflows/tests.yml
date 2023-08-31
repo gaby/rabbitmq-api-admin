@@ -14,9 +14,9 @@ jobs:
           - '3.10'
           - '3.11'
         rabbitmq:
-          - '3.10-management'
-          - '3.11-management'
-          - '3.12-management'
+          - '3.7-management'
+          - '3.8-management'
+          - '3.9-management'
     services:
       rabbitmq:
         image: rabbitmq:${{ matrix.rabbitmq }}
