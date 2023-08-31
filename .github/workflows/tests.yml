@@ -8,11 +8,15 @@ jobs:
     container: python:${{ matrix.python }}
     strategy:
       matrix:
-        python: [3.8, 3.9, 3.10, 3.11]
+        python:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
         rabbitmq:
-          - 3.10-management
-          - 3.11-management
-          - 3.12-management
+          - '3.10-management'
+          - '3.11-management'
+          - '3.12-management'
     services:
       rabbitmq:
         image: rabbitmq:${{ matrix.rabbitmq }}
@@ -48,8 +52,11 @@ jobs:
     container: python:${{ matrix.python }}
     strategy:
       matrix:
-        python: [3.8, 3.9, 3.10, 3.11]
-
+        python:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
     steps:
       - uses: actions/checkout@v3
 
