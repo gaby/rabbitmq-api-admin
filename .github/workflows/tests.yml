@@ -8,11 +8,14 @@ jobs:
     container: python:${{ matrix.python }}
     strategy:
       matrix:
-        python: [3.8, 3.9, 3.10.0]
-
+        python: [3.8, 3.9, 3.10, 3.11]
+        rabbitmq:
+          - 3.10-management
+          - 3.11-management
+          - 3.12-management
     services:
       rabbitmq:
-        image: rabbitmq:3.7.7-management
+        image: rabbitmq:${{ matrix.rabbitmq }}
         ports:
           - 5672:5672
           - 15672:5672
@@ -23,10 +26,9 @@ jobs:
       run: |
         apt-get update && apt-get install -y wait-for-it
 
-    - uses: actions/checkout@v3
     - name: Install poetry
       run: |
-        pip install poetry==1.5.1
+        pip install poetry==1.6.1
 
     - name: Install dependencies
       run: |
@@ -46,14 +48,14 @@ jobs:
     container: python:${{ matrix.python }}
     strategy:
       matrix:
-        python: [3.8, 3.9, 3.10.0]
+        python: [3.8, 3.9, 3.10, 3.11]
 
     steps:
       - uses: actions/checkout@v3
 
       - name: Install poetry
         run: |
-          pip install poetry==1.5.1
+          pip install poetry==1.6.1
 
       - name: Install dependencies
         run: |
